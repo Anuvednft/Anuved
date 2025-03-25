@@ -70,10 +70,11 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
               src={post.coverImage}
               alt={post.title}
               fill
-              sizes="(max-width: 768px) 100vw, 100vw"
+              sizes="100vw"
               className="object-cover"
               priority
-              unoptimized={false}
+              loading="eager"
+              unoptimized={true}
             />
             <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end">
               <div className="container py-4 md:py-8">
@@ -145,10 +146,11 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
                         src={relatedPost.coverImage}
                         alt={relatedPost.title}
                         fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        sizes="100vw"
                         className="object-cover"
                         priority
-                        unoptimized={false}
+                        loading="eager"
+                        unoptimized={true}
                       />
                     </div>
                   ) : (

@@ -26,10 +26,11 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
               src={post.coverImage}
               alt={post.title}
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              sizes="100vw"
               className="object-cover"
               priority
-              unoptimized={false}
+              loading="eager"
+              unoptimized={true}
             />
           </div>
         </Link>

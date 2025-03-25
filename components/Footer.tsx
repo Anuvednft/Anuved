@@ -17,15 +17,15 @@ const Footer = () => {
               and a knack for creating seamless user experiences.
             </p>
             <div className="flex space-x-4">
-              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" 
+              <a href="https://github.com/Anuvednft" target="_blank" rel="noopener noreferrer" 
                 className="text-text-secondary hover:text-primary transition-colors">
                 <FaGithub size={22} />
               </a>
-              <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" 
+              <a href="https://linkedin.com/anuved" target="_blank" rel="noopener noreferrer" 
                 className="text-text-secondary hover:text-primary transition-colors">
                 <FaLinkedin size={22} />
               </a>
-              <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" 
+              <a href="https://twitter.com/anuvednfts" target="_blank" rel="noopener noreferrer" 
                 className="text-text-secondary hover:text-primary transition-colors">
                 <FaTwitter size={22} />
               </a>
@@ -70,7 +70,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <span className="text-primary mr-2">Location:</span>
-                <span className="text-text-secondary">Your Location</span>
+                <span className="text-text-secondary"> Bareilly, Uttar Pradesh</span>
               </li>
               <li>
                 <a href="/contact" className="button-primary inline-block mt-2">Get In Touch</a>
@@ -85,7 +85,7 @@ const Footer = () => {
             © {currentYear} Vedkamal. All Rights Reserved.
           </p>
           <p className="text-text-muted text-xs mt-2">
-            Designed & Built with 💙
+            Designed & Built with Anuved💙
           </p>
         </div>
       </div>

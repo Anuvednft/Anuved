@@ -20,20 +20,22 @@ const AboutPage: NextPage = () => {
       <section className="py-8 md:py-12">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center px-4 md:px-0">
-            <div className="relative h-72 md:h-96 w-full">
+            <div className="relative h-72 md:h-96 w-full image-container">
               <Image
                 src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
                 alt="Ved Kamal"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="100vw"
                 className="object-cover rounded-lg"
                 priority
+                loading="eager"
+                unoptimized={true}
               />
             </div>
             <div>
               <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">Personal Journey</h2>
               <p className="text-gray-600 mb-4">
-                I'm currently pursuing my Bachelor of Computer Applications (BCA) at a future university. My journey in the world of technology and web development started with a simple fascination with how websites work.
+                I'm currently pursuing my Bachelor of Computer Applications (BCA) at Mahatma Jyotiba Phule Rohilkhand University in Bareilly. My journey in the world of technology and web development started with a simple fascination with how websites work.
               </p>
               <p className="text-gray-600 mb-4">
                 Based in Bareilly, Uttar Pradesh, I've been building my skills in web development, focusing on modern technologies like React, Next.js, and TypeScript. This blog is my platform to share what I learn along the way.
@@ -96,7 +98,7 @@ const AboutPage: NextPage = () => {
             <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">Education</h2>
             <div className="bg-white p-5 md:p-6 rounded-lg shadow-sm mb-6">
               <h3 className="text-lg md:text-xl font-semibold mb-2">Bachelor of Computer Applications (BCA)</h3>
-              <p className="text-sm md:text-base text-gray-600 mb-2">Future University</p>
+              <p className="text-sm md:text-base text-gray-600 mb-2">Mahatma Jyotiba Phule Rohilkhand University, Bareilly</p>
               <p className="text-sm md:text-base text-gray-500">Expected Graduation: 2025</p>
             </div>
             <p className="text-base md:text-lg text-gray-600">
