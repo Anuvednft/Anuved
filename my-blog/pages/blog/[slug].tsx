@@ -4,89 +4,38 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 import { BlogPost } from '@/components/BlogCard';
+import { useRouter } from 'next/router';
 
 // Sample data for blog posts (in a real app, this would come from an API or CMS)
 const allPosts: BlogPost[] = [
   {
-    id: '1',
-    title: 'Getting Started with Modern Web Development',
-    excerpt: 'Learn the fundamentals of modern web development with the latest tools and frameworks.',
-    date: 'May 15, 2023',
-    author: 'John Doe',
-    coverImage: 'https://images.unsplash.com/photo-1546900703-cf06143d1239?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    slug: 'getting-started-with-modern-web-development',
-    readTime: '5 min read'
+    slug: 'getting-started-with-nextjs',
+    title: 'Getting Started with Next.js',
+    excerpt: 'Learn how to build modern web applications with Next.js',
+    date: '2024-03-25',
+    author: 'Ved Kamal',
+    content: `
+      Next.js is a powerful framework for building React applications. It provides
+      features like server-side rendering, static site generation, and API routes
+      out of the box.
+
+      In this post, we'll explore the basics of Next.js and how to get started
+      with your first project.
+    `
   },
   {
-    id: '2',
-    title: 'The Art of Minimalistic Design',
-    excerpt: 'Explore the principles of minimalistic design and how to apply them to your projects.',
-    date: 'June 3, 2023',
-    author: 'Jane Smith',
-    coverImage: 'https://images.unsplash.com/photo-1616077168087-594885c9a40b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    slug: 'the-art-of-minimalistic-design',
-    readTime: '4 min read'
-  },
-  {
-    id: '3',
-    title: 'Optimizing Performance in React Applications',
-    excerpt: 'Discover techniques to improve the performance of your React applications.',
-    date: 'July 12, 2023',
-    author: 'Mike Johnson',
-    coverImage: 'https://images.unsplash.com/photo-1551033406-611cf9a28f67?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    slug: 'optimizing-performance-in-react-applications',
-    readTime: '7 min read'
+    slug: 'typescript-best-practices',
+    title: 'TypeScript Best Practices',
+    excerpt: 'Essential tips and tricks for writing better TypeScript code',
+    date: '2024-03-24',
+    author: 'Ved Kamal',
+    content: `
+      TypeScript adds static typing to JavaScript, making your code more reliable
+      and easier to maintain. Here are some best practices to follow when writing
+      TypeScript code.
+    `
   }
 ];
-
-// Sample content for the first blog post
-const sampleContent = `
-<h2>Introduction to Modern Web Development</h2>
-<p>Web development has evolved significantly over the past few years. With the introduction of modern frameworks and tools, building websites and web applications has become more efficient and powerful than ever before.</p>
-
-<p>In this comprehensive guide, we'll explore the fundamentals of modern web development, discussing the latest tools, frameworks, and best practices that will help you build robust and scalable web applications.</p>
-
-<h2>Understanding the Basics</h2>
-<p>Before diving into advanced concepts, it's essential to have a solid foundation in the core technologies of the web: HTML, CSS, and JavaScript. These three technologies form the backbone of every website and web application.</p>
-
-<h3>HTML: The Structure</h3>
-<p>HTML (HyperText Markup Language) provides the structure of a web page. It's the skeleton that holds everything together. Modern HTML5 introduces semantic elements like &lt;header&gt;, &lt;footer&gt;, &lt;nav&gt;, and &lt;article&gt;, which provide more meaning to the structure of your web pages.</p>
-
-<h3>CSS: The Presentation</h3>
-<p>CSS (Cascading Style Sheets) is responsible for the presentation of your web pages. It controls how the HTML elements look on the screen. Modern CSS includes features like flexbox, grid, and custom properties, which make creating responsive and dynamic layouts easier than ever before.</p>
-
-<h3>JavaScript: The Behavior</h3>
-<p>JavaScript adds interactivity to your web pages. It's a powerful programming language that runs in the browser and allows you to create dynamic and interactive user experiences. Modern JavaScript (ES6+) introduced features like arrow functions, template literals, destructuring, and async/await, which make coding more concise and readable.</p>
-
-<h2>Modern Frontend Frameworks</h2>
-<p>Frontend frameworks have revolutionized the way we build web applications. They provide a structured approach to building user interfaces, making it easier to manage state, handle user interactions, and create reusable components.</p>
-
-<h3>React</h3>
-<p>React, developed by Facebook, is a declarative JavaScript library for building user interfaces. It uses a component-based architecture, making it easy to build and maintain complex UIs. React's virtual DOM and efficient rendering mechanism ensure optimal performance.</p>
-
-<h3>Vue.js</h3>
-<p>Vue.js is a progressive JavaScript framework that's easy to learn and integrate into projects. It offers a balance between simplicity and power, making it an excellent choice for both small and large-scale applications.</p>
-
-<h3>Angular</h3>
-<p>Angular, maintained by Google, is a comprehensive framework for building complex web applications. It provides a complete solution out of the box, including routing, form handling, and state management.</p>
-
-<h2>Backend Technologies</h2>
-<p>The backend of a web application handles data storage, processing, and business logic. Modern backend technologies focus on scalability, performance, and developer experience.</p>
-
-<h3>Node.js</h3>
-<p>Node.js allows you to run JavaScript on the server-side, enabling full-stack JavaScript development. Its event-driven, non-blocking I/O model makes it efficient and suitable for real-time applications.</p>
-
-<h3>Express.js</h3>
-<p>Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for building web and mobile applications. It's the de facto standard server framework for Node.js.</p>
-
-<h3>API Development</h3>
-<p>Modern web applications often use APIs (Application Programming Interfaces) to communicate between the frontend and backend. RESTful APIs and GraphQL are popular approaches to API development, each with its strengths and use cases.</p>
-
-<h2>Conclusion</h2>
-<p>Modern web development offers a wide range of tools and technologies that make building web applications more efficient and enjoyable. By understanding the fundamentals and exploring modern frameworks and tools, you'll be well-equipped to create robust, scalable, and user-friendly web applications.</p>
-
-<p>Remember, the key to success in web development is continuous learning and experimentation. The field is constantly evolving, so stay curious and keep exploring new technologies and approaches.</p>
-`;
 
 interface PostPageProps {
   post: BlogPost & { content: string };
@@ -94,6 +43,22 @@ interface PostPageProps {
 }
 
 const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
+  const router = useRouter();
+  const { slug } = router.query;
+
+  if (!post) {
+    return (
+      <Layout>
+        <div className="container mx-auto px-4 py-8">
+          <h1 className="text-2xl font-bold mb-4">Post not found</h1>
+          <Link href="/blog" className="text-blue-600 hover:underline">
+            Back to Blog
+          </Link>
+        </div>
+      </Layout>
+    );
+  }
+
   return (
     <Layout title={`${post.title} - Modern Blog`} description={post.excerpt}>
       <article>
@@ -110,8 +75,6 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{post.title}</h1>
               <div className="flex items-center text-white">
                 <span>{post.date}</span>
-                <span className="mx-2">•</span>
-                <span>{post.readTime}</span>
                 <span className="mx-2">•</span>
                 <span>By {post.author}</span>
               </div>
@@ -159,7 +122,7 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
           <h2 className="text-3xl font-bold mb-8 text-center">Related Posts</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {relatedPosts.map((relatedPost) => (
-              <div key={relatedPost.id} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div key={relatedPost.slug} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
                 <Link href={`/blog/${relatedPost.slug}`} className="block">
                   <div className="relative h-48 w-full">
                     <Image
@@ -174,8 +137,6 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
                 <div className="p-5">
                   <div className="flex items-center text-sm text-gray-500 mb-2">
                     <span>{relatedPost.date}</span>
-                    <span className="mx-2">•</span>
-                    <span>{relatedPost.readTime}</span>
                   </div>
                   
                   <Link href={`/blog/${relatedPost.slug}`} className="block">
@@ -222,14 +183,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   // Get related posts (excluding the current post)
   const relatedPosts = allPosts
-    .filter((p) => p.id !== post.id)
+    .filter((p) => p.slug !== slug)
     .slice(0, 3);
 
   return {
     props: {
       post: {
         ...post,
-        content: sampleContent
+        content: post.content
       },
       relatedPosts,
     },
