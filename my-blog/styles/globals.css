@@ -5,10 +5,12 @@
 @layer base {
   html {
     @apply text-base;
+    -webkit-tap-highlight-color: transparent;
   }
   
   body {
     @apply bg-white text-gray-800 min-h-screen;
+    touch-action: manipulation;
   }
   
   h1 {
@@ -59,5 +61,10 @@
   
   .mobile-text {
     @apply text-sm md:text-base;
+  }
+  
+  .image-container {
+    @apply relative;
+    touch-action: pan-y;
   }
 } 

@@ -21,12 +21,15 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
       {post.coverImage && (
         <Link href={`/blog/${post.slug}`} className="block">
-          <div className="relative h-40 w-full">
+          <div className="relative h-40 w-full image-container">
             <Image
               src={post.coverImage}
               alt={post.title}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover"
+              priority
+              unoptimized={false}
             />
           </div>
         </Link>

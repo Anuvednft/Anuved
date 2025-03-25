@@ -65,13 +65,15 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
     <Layout title={`${post.title} - Modern Blog`} description={post.excerpt}>
       <article>
         {post.coverImage ? (
-          <div className="relative h-64 md:h-96 w-full">
+          <div className="relative h-64 md:h-96 w-full image-container">
             <Image
               src={post.coverImage}
               alt={post.title}
               fill
+              sizes="(max-width: 768px) 100vw, 100vw"
               className="object-cover"
               priority
+              unoptimized={false}
             />
             <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end">
               <div className="container py-4 md:py-8">
@@ -138,12 +140,15 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
               <div key={relatedPost.slug} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
                 <Link href={`/blog/${relatedPost.slug}`} className="block">
                   {relatedPost.coverImage ? (
-                    <div className="relative h-36 md:h-48 w-full">
+                    <div className="relative h-36 md:h-48 w-full image-container">
                       <Image
                         src={relatedPost.coverImage}
                         alt={relatedPost.title}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover"
+                        priority
+                        unoptimized={false}
                       />
                     </div>
                   ) : (
