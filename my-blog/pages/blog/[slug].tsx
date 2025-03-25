@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import Layout from '@/components/Layout';
-import { BlogPost } from '@/components/BlogCard';
+import { BlogPost } from '../../components/BlogCard';
 import { useRouter } from 'next/router';
 
 // Sample data for blog posts (in a real app, this would come from an API or CMS)
@@ -14,6 +14,7 @@ const allPosts: BlogPost[] = [
     excerpt: 'Learn how to build modern web applications with Next.js',
     date: '2024-03-25',
     author: 'Ved Kamal',
+    coverImage: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=2070&q=80',
     content: `
       Next.js is a powerful framework for building React applications. It provides
       features like server-side rendering, static site generation, and API routes
@@ -29,6 +30,7 @@ const allPosts: BlogPost[] = [
     excerpt: 'Essential tips and tricks for writing better TypeScript code',
     date: '2024-03-24',
     author: 'Ved Kamal',
+    coverImage: 'https://images.unsplash.com/photo-1592609931095-54a2168ae893?auto=format&fit=crop&w=2070&q=80',
     content: `
       TypeScript adds static typing to JavaScript, making your code more reliable
       and easier to maintain. Here are some best practices to follow when writing
@@ -62,25 +64,36 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
   return (
     <Layout title={`${post.title} - Modern Blog`} description={post.excerpt}>
       <article>
-        <div className="relative h-96 w-full">
-          <Image
-            src={post.coverImage}
-            alt={post.title}
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end">
-            <div className="container py-8">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{post.title}</h1>
-              <div className="flex items-center text-white">
-                <span>{post.date}</span>
-                <span className="mx-2">•</span>
-                <span>By {post.author}</span>
+        {post.coverImage ? (
+          <div className="relative h-96 w-full">
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+              <div className="container py-8">
+                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{post.title}</h1>
+                <div className="flex items-center text-white">
+                  <span>{post.date}</span>
+                  <span className="mx-2">•</span>
+                  <span>By {post.author}</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="container py-8">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
+            <div className="flex items-center text-gray-500">
+              <span>{post.date}</span>
+              <span className="mx-2">•</span>
+              <span>By {post.author}</span>
+            </div>
+          </div>
+        )}
 
         <div className="container py-12">
           <div className="max-w-3xl mx-auto">
@@ -124,14 +137,20 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
             {relatedPosts.map((relatedPost) => (
               <div key={relatedPost.slug} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
                 <Link href={`/blog/${relatedPost.slug}`} className="block">
-                  <div className="relative h-48 w-full">
-                    <Image
-                      src={relatedPost.coverImage}
-                      alt={relatedPost.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+                  {relatedPost.coverImage ? (
+                    <div className="relative h-48 w-full">
+                      <Image
+                        src={relatedPost.coverImage}
+                        alt={relatedPost.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="h-16 bg-gray-100 flex items-center justify-center">
+                      <span className="text-gray-400">No image</span>
+                    </div>
+                  )}
                 </Link>
                 
                 <div className="p-5">
