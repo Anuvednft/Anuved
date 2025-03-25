@@ -58,20 +58,20 @@ const allPosts: BlogPost[] = [
 const BlogPage: NextPage = () => {
   return (
     <Layout title="Blog - Modern Blog" description="Explore our latest articles on web development, design, and technology">
-      <section className="py-12 bg-accent-blue">
+      <section className="py-8 md:py-12 bg-accent-blue">
         <div className="container">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">Our Blog</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center px-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4">Our Blog</h1>
+            <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto">
               Explore our collection of articles on web development, design, and technology.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-12">
+      <section className="py-8 md:py-12">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-4 md:px-0">
             {allPosts.map((post) => (
               <BlogCard key={post.slug} post={post} />
             ))}

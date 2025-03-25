@@ -51,8 +51,8 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
   if (!post) {
     return (
       <Layout>
-        <div className="container mx-auto px-4 py-8">
-          <h1 className="text-2xl font-bold mb-4">Post not found</h1>
+        <div className="container mx-auto px-4 py-6 md:py-8">
+          <h1 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Post not found</h1>
           <Link href="/blog" className="text-blue-600 hover:underline">
             Back to Blog
           </Link>
@@ -65,7 +65,7 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
     <Layout title={`${post.title} - Modern Blog`} description={post.excerpt}>
       <article>
         {post.coverImage ? (
-          <div className="relative h-96 w-full">
+          <div className="relative h-64 md:h-96 w-full">
             <Image
               src={post.coverImage}
               alt={post.title}
@@ -74,9 +74,9 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
               priority
             />
             <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end">
-              <div className="container py-8">
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{post.title}</h1>
-                <div className="flex items-center text-white">
+              <div className="container py-4 md:py-8">
+                <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4">{post.title}</h1>
+                <div className="flex items-center text-white text-sm md:text-base">
                   <span>{post.date}</span>
                   <span className="mx-2">•</span>
                   <span>By {post.author}</span>
@@ -85,9 +85,9 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
             </div>
           </div>
         ) : (
-          <div className="container py-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
-            <div className="flex items-center text-gray-500">
+          <div className="container py-6 md:py-8">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4">{post.title}</h1>
+            <div className="flex items-center text-gray-500 text-sm md:text-base">
               <span>{post.date}</span>
               <span className="mx-2">•</span>
               <span>By {post.author}</span>
@@ -95,14 +95,14 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
           </div>
         )}
 
-        <div className="container py-12">
-          <div className="max-w-3xl mx-auto">
-            <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
+        <div className="container py-6 md:py-12">
+          <div className="max-w-3xl mx-auto px-4 md:px-0">
+            <div className="prose prose-sm md:prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
             
-            <div className="mt-12 pt-8 border-t border-gray-200">
-              <div className="flex items-center justify-between">
+            <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-gray-200">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-800">Share this post</h4>
+                  <h4 className="text-base md:text-lg font-semibold text-gray-800">Share this post</h4>
                   <div className="flex space-x-4 mt-2">
                     <a href="#" className="text-gray-500 hover:text-blue-600 transition-colors duration-200">
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -130,15 +130,15 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
         </div>
       </article>
 
-      <section className="py-12 bg-accent-gray">
+      <section className="py-8 md:py-12 bg-accent-gray">
         <div className="container">
-          <h2 className="text-3xl font-bold mb-8 text-center">Related Posts</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="text-xl md:text-3xl font-bold mb-6 md:mb-8 text-center">Related Posts</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-4 md:px-0">
             {relatedPosts.map((relatedPost) => (
               <div key={relatedPost.slug} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
                 <Link href={`/blog/${relatedPost.slug}`} className="block">
                   {relatedPost.coverImage ? (
-                    <div className="relative h-48 w-full">
+                    <div className="relative h-36 md:h-48 w-full">
                       <Image
                         src={relatedPost.coverImage}
                         alt={relatedPost.title}
@@ -153,18 +153,18 @@ const PostPage: NextPage<PostPageProps> = ({ post, relatedPosts }) => {
                   )}
                 </Link>
                 
-                <div className="p-5">
-                  <div className="flex items-center text-sm text-gray-500 mb-2">
+                <div className="p-4 md:p-5">
+                  <div className="flex items-center text-xs md:text-sm text-gray-500 mb-2">
                     <span>{relatedPost.date}</span>
                   </div>
                   
                   <Link href={`/blog/${relatedPost.slug}`} className="block">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2 hover:text-blue-600 transition-colors duration-200">
+                    <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 hover:text-blue-600 transition-colors duration-200">
                       {relatedPost.title}
                     </h3>
                   </Link>
                   
-                  <p className="text-gray-600">
+                  <p className="text-sm md:text-base text-gray-600">
                     {relatedPost.excerpt}
                   </p>
                 </div>
