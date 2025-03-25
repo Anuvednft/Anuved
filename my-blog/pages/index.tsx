@@ -1,49 +1,41 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import Layout from '@/components/Layout';
-import BlogCard, { BlogPost } from '@/components/BlogCard';
+import BlogCard, { BlogPost } from '../components/BlogCard';
 
 // Sample data for blog posts (in a real app, this would come from an API or CMS)
 const featuredPosts: BlogPost[] = [
   {
-    id: '1',
-    title: 'Getting Started with Modern Web Development',
-    excerpt: 'Learn the fundamentals of modern web development with the latest tools and frameworks.',
-    date: 'May 15, 2023',
-    author: 'John Doe',
-    coverImage: 'https://images.unsplash.com/photo-1546900703-cf06143d1239?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    slug: 'getting-started-with-modern-web-development',
-    readTime: '5 min read'
+    slug: 'getting-started-with-nextjs',
+    title: 'Getting Started with Next.js',
+    excerpt: 'Learn how to build modern web applications with Next.js',
+    date: '2024-03-25',
+    author: 'Ved Kamal',
+    coverImage: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=2070&q=80'
   },
   {
-    id: '2',
+    slug: 'typescript-best-practices',
+    title: 'TypeScript Best Practices',
+    excerpt: 'Essential tips and tricks for writing better TypeScript code',
+    date: '2024-03-24',
+    author: 'Ved Kamal',
+    coverImage: 'https://images.unsplash.com/photo-1592609931095-54a2168ae893?auto=format&fit=crop&w=2070&q=80'
+  },
+  {
+    slug: 'modern-web-development',
+    title: 'Modern Web Development Techniques',
+    excerpt: 'Explore the latest approaches to building fast, responsive websites',
+    date: '2024-03-20',
+    author: 'Ved Kamal',
+    coverImage: 'https://images.unsplash.com/photo-1546900703-cf06143d1239?auto=format&fit=crop&w=1350&q=80'
+  },
+  {
+    slug: 'minimalistic-design',
     title: 'The Art of Minimalistic Design',
-    excerpt: 'Explore the principles of minimalistic design and how to apply them to your projects.',
-    date: 'June 3, 2023',
-    author: 'Jane Smith',
-    coverImage: 'https://images.unsplash.com/photo-1616077168087-594885c9a40b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    slug: 'the-art-of-minimalistic-design',
-    readTime: '4 min read'
-  },
-  {
-    id: '3',
-    title: 'Optimizing Performance in React Applications',
-    excerpt: 'Discover techniques to improve the performance of your React applications.',
-    date: 'July 12, 2023',
-    author: 'Mike Johnson',
-    coverImage: 'https://images.unsplash.com/photo-1551033406-611cf9a28f67?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    slug: 'optimizing-performance-in-react-applications',
-    readTime: '7 min read'
-  },
-  {
-    id: '4',
-    title: 'Creating Accessible Web Experiences',
-    excerpt: 'Learn how to build websites that are accessible to everyone, regardless of their abilities.',
-    date: 'August 25, 2023',
-    author: 'Sarah Wilson',
-    coverImage: 'https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    slug: 'creating-accessible-web-experiences',
-    readTime: '6 min read'
+    excerpt: 'Explore the principles of minimalistic design and how to apply them to your projects',
+    date: '2024-03-15',
+    author: 'Ved Kamal',
+    coverImage: 'https://images.unsplash.com/photo-1616077168087-594885c9a40b?auto=format&fit=crop&w=1350&q=80'
   }
 ];
 
@@ -67,7 +59,7 @@ const Home: NextPage = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredPosts.map((post) => (
-              <BlogCard key={post.id} post={post} />
+              <BlogCard key={post.slug} post={post} />
             ))}
           </div>
         </div>
