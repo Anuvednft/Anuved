@@ -48,61 +48,61 @@ const AboutPage: NextPage = () => {
         </div>
       </section>
 
-      <section className="py-6 md:py-8 bg-accent-gray">
+      <section className="py-5 md:py-6 bg-accent-gray">
         <div className="container px-4 md:px-0">
-          <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center">My Skills</h2>
+          <h2 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center">My Skills</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <div className="bg-white p-4 rounded-lg shadow-sm">
-              <div className="text-blue-600 mb-2">
-                <svg className="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+            <div className="bg-white p-3 rounded-lg shadow-sm">
+              <div className="text-blue-600 mb-1.5">
+                <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
               </div>
-              <h3 className="text-base md:text-lg font-semibold mb-1">Web Development</h3>
-              <p className="text-xs md:text-sm text-gray-600">
-                Proficient in HTML, CSS, JavaScript, React, and Next.js for building modern web applications.
+              <h3 className="text-sm md:text-base font-semibold mb-0.5">Web Development</h3>
+              <p className="text-xs text-gray-600">
+                HTML, CSS, JavaScript, React, and Next.js for modern web applications.
               </p>
             </div>
             
-            <div className="bg-white p-4 rounded-lg shadow-sm">
-              <div className="text-blue-600 mb-2">
-                <svg className="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <div className="bg-white p-3 rounded-lg shadow-sm">
+              <div className="text-blue-600 mb-1.5">
+                <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                 </svg>
               </div>
-              <h3 className="text-base md:text-lg font-semibold mb-1">UI/UX Design</h3>
-              <p className="text-xs md:text-sm text-gray-600">
-                Skilled in creating responsive, mobile-friendly designs with a focus on user experience and accessibility.
+              <h3 className="text-sm md:text-base font-semibold mb-0.5">UI/UX Design</h3>
+              <p className="text-xs text-gray-600">
+                Creating responsive designs with focus on user experience.
               </p>
             </div>
             
-            <div className="bg-white p-4 rounded-lg shadow-sm">
-              <div className="text-blue-600 mb-2">
-                <svg className="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <div className="bg-white p-3 rounded-lg shadow-sm">
+              <div className="text-blue-600 mb-1.5">
+                <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
               </div>
-              <h3 className="text-base md:text-lg font-semibold mb-1">Problem Solving</h3>
-              <p className="text-xs md:text-sm text-gray-600">
-                Strong analytical skills and a passion for solving complex technical challenges with efficient solutions.
+              <h3 className="text-sm md:text-base font-semibold mb-0.5">Problem Solving</h3>
+              <p className="text-xs text-gray-600">
+                Analytical skills for solving technical challenges.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-6 md:py-8">
+      <section className="py-5 md:py-6">
         <div className="container px-4 md:px-0">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Education</h2>
-            <div className="bg-white p-4 rounded-lg shadow-sm mb-4">
-              <h3 className="text-base md:text-lg font-semibold mb-1">Bachelor of Computer Applications (BCA)</h3>
-              <p className="text-xs md:text-sm text-gray-600 mb-1">Mahatma Jyotiba Phule Rohilkhand University, Bareilly</p>
-              <p className="text-xs md:text-sm text-gray-500">Expected Graduation: 2025</p>
+            <h2 className="text-lg md:text-xl font-bold mb-3">Education</h2>
+            <div className="bg-white p-3 rounded-lg shadow-sm mb-3">
+              <h3 className="text-sm md:text-base font-semibold mb-0.5">Bachelor of Computer Applications (BCA)</h3>
+              <p className="text-xs text-gray-600 mb-0.5">Mahatma Jyotiba Phule Rohilkhand University, Bareilly</p>
+              <p className="text-xs text-gray-500">Expected Graduation: 2025</p>
             </div>
-            <p className="text-xs md:text-base text-gray-600">
-              Currently focused on expanding my knowledge in programming, web development, and computer science fundamentals. I'm passionate about using technology to solve real-world problems.
+            <p className="text-xs text-gray-600">
+              Currently focused on expanding my knowledge in programming, web development, and computer science fundamentals.
             </p>
           </div>
         </div>
