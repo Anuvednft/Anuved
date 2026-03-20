@@ -4,38 +4,34 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        // Light background colors
         background: {
-          light: '#F5F8FF',
-          lighter: '#FFFFFF', 
-          DEFAULT: '#F5F8FF',
+          light: 'rgb(var(--bg-light) / <alpha-value>)',
+          lighter: 'rgb(var(--bg-lighter) / <alpha-value>)',
+          DEFAULT: 'rgb(var(--bg-default) / <alpha-value>)',
         },
-        // Primary accent color (teal/blue)
         primary: {
-          light: '#17CDD7',
+          light: '#38d9f5',
           DEFAULT: '#15B1D4',
           dark: '#0F7995',
         },
-        // Secondary accent color (purple/pink)
         secondary: {
-          light: '#7C4DFF',
-          DEFAULT: '#6C3BFF',
-          dark: '#5D2DFF',
+          light: '#a78bfa',
+          DEFAULT: '#7C3AED',
+          dark: '#5b21b6',
         },
-        // Text colors for light mode
         text: {
-          primary: '#1A1A2E',
-          secondary: '#4A5568',
-          muted: '#718096',
+          primary: 'rgb(var(--text-primary) / <alpha-value>)',
+          secondary: 'rgb(var(--text-secondary) / <alpha-value>)',
+          muted: 'rgb(var(--text-muted) / <alpha-value>)',
         },
-        // Surface/card colors for light mode
         surface: {
-          light: '#FFFFFF',
-          DEFAULT: '#F0F4FF',
-          dark: '#E2E8F0',
+          light: 'rgb(var(--surface-light) / <alpha-value>)',
+          DEFAULT: 'rgb(var(--surface) / <alpha-value>)',
+          dark: 'rgb(var(--surface-dark) / <alpha-value>)',
         },
       },
       fontFamily: {

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaSun, FaMoon } from 'react-icons/fa';
 
 const navItems = [
   { name: 'Home', path: '/' },
@@ -15,9 +16,12 @@ const navItems = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
   const router = useRouter();
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -32,8 +36,9 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'py-3 bg-white/90 backdrop-blur-lg shadow-sm' : 'py-5'
+        scrolled ? 'py-3 backdrop-blur-xl shadow-lg' : 'py-5'
       }`}
+      style={scrolled ? { background: 'var(--nav-bg)', borderBottom: '1px solid var(--border)' } : {}}
     >
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
@@ -63,6 +68,15 @@ const Navbar = () => {
           >
             Hire Me
           </a>
+          {mounted && (
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="ml-4 p-2 rounded-full hover:bg-surface text-text-primary transition-colors flex items-center justify-center"
+              aria-label="Toggle Theme"
+            >
+              {theme === 'dark' ? <FaSun size={20} className="text-yellow-400" /> : <FaMoon size={20} className="text-slate-700" />}
+            </button>
+          )}
         </nav>
 
         {/* Mobile Menu Button */}
@@ -85,7 +99,8 @@ const Navbar = () => {
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
-          className="md:hidden bg-white/95 backdrop-blur-lg shadow-sm"
+          className="md:hidden backdrop-blur-xl"
+          style={{ background: 'var(--nav-bg)', borderTop: '1px solid var(--border)' }}
         >
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             {navItems.map((item) => (
@@ -102,17 +117,29 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <a 
-              href="#" 
-              className="button-primary text-center"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsOpen(false);
-                router.push('/contact');
-              }}
-            >
-              Hire Me
-            </a>
+            <div className="flex items-center justify-between pt-4 border-t" style={{ borderColor: 'var(--border)' }}>
+              <a 
+                href="#" 
+                className="button-primary text-center flex-1 mr-4"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsOpen(false);
+                  router.push('/contact');
+                }}
+              >
+                Hire Me
+              </a>
+              {mounted && (
+                <button
+                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  className="p-3 rounded-full hover:bg-surface text-text-primary transition-colors border"
+                  style={{ borderColor: 'var(--border)' }}
+                  aria-label="Toggle Theme"
+                >
+                  {theme === 'dark' ? <FaSun size={20} className="text-yellow-400" /> : <FaMoon size={20} className="text-slate-700" />}
+                </button>
+              )}
+            </div>
           </div>
         </motion.div>
       )}

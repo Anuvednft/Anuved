@@ -3,6 +3,8 @@ import Head from 'next/head';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import CustomCursor from './CustomCursor';
+import { FaWhatsapp } from 'react-icons/fa';
+import { portfolioConfig } from '@/config/portfolio';
 
 type LayoutProps = {
   children: ReactNode;
@@ -12,8 +14,8 @@ type LayoutProps = {
 
 const Layout = ({
   children,
-  title = 'Vedkamal | Full Stack Developer',
-  description = 'Portfolio website of Vedkamal, a skilled Full Stack Developer specializing in modern web applications',
+  title = `${portfolioConfig.personal.name} | ${portfolioConfig.personal.role}`,
+  description = `Portfolio website of ${portfolioConfig.personal.name}, a skilled ${portfolioConfig.personal.role} specializing in modern applications`,
 }: LayoutProps) => {
   return (
     <>
@@ -30,6 +32,20 @@ const Layout = ({
           {children}
         </main>
         <Footer />
+        
+        {/* Floating WhatsApp Button */}
+        {portfolioConfig.personal.whatsappNumber && (
+          <a 
+            href={`https://wa.me/${portfolioConfig.personal.whatsappNumber}`} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="fixed bottom-6 right-6 p-4 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-all hover:scale-110 z-50 flex items-center justify-center"
+            style={{ boxShadow: '0 4px 14px rgba(34, 197, 94, 0.4)' }}
+            aria-label="Chat on WhatsApp"
+          >
+            <FaWhatsapp size={28} />
+          </a>
+        )}
       </div>
     </>
   );

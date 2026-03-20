@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaMapMarkerAlt, FaEnvelope, FaPhone, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaEnvelope, FaPhone, FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 import Layout from '@/components/Layout';
+import { portfolioConfig } from '@/config/portfolio';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -47,7 +48,7 @@ export default function Contact() {
   };
   
   return (
-    <Layout title="Contact | Vedkamal - Full Stack Developer">
+    <Layout title={`Contact | ${portfolioConfig.personal.name} - ${portfolioConfig.personal.role}`}>
       <section className="pt-32 pb-24 md:pt-40 md:pb-32">
         <div className="container mx-auto px-4">
           <motion.div
@@ -78,62 +79,82 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="text-lg font-medium mb-1">Location</h3>
-                      <p className="text-text-secondary">Your Location, Country</p>
+                      <p className="text-text-secondary">{portfolioConfig.personal.location}</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start">
-                    <div className="p-3 rounded-lg bg-primary/10 mr-4">
-                      <FaEnvelope className="text-primary text-xl" />
+                  {portfolioConfig.personal.email && (
+                    <div className="flex items-start">
+                      <div className="p-3 rounded-lg bg-primary/10 mr-4">
+                        <FaEnvelope className="text-primary text-xl" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-medium mb-1">Email</h3>
+                        <a href={`mailto:${portfolioConfig.personal.email}`} className="text-text-secondary hover:text-primary transition-colors">
+                          {portfolioConfig.personal.email}
+                        </a>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-lg font-medium mb-1">Email</h3>
-                      <a href="mailto:Vedkamlpal@gmail.com" className="text-text-secondary hover:text-primary transition-colors">
-                        Vedkamlpal@gmail.com
-                      </a>
-                    </div>
-                  </div>
+                  )}
                   
-                  <div className="flex items-start">
-                    <div className="p-3 rounded-lg bg-primary/10 mr-4">
-                      <FaPhone className="text-primary text-xl" />
+                  {(portfolioConfig.personal.phone || portfolioConfig.personal.whatsappNumber) && (
+                    <div className="flex items-start">
+                      <div className="p-3 rounded-lg bg-primary/10 mr-4">
+                        <FaPhone className="text-primary text-xl" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-medium mb-1">Phone</h3>
+                        <a href={`tel:+${portfolioConfig.personal.phone || portfolioConfig.personal.whatsappNumber}`} className="text-text-secondary hover:text-primary transition-colors">
+                          +{portfolioConfig.personal.phone || portfolioConfig.personal.whatsappNumber}
+                        </a>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-lg font-medium mb-1">Phone</h3>
-                      <a href="tel:+917251818068" className="text-text-secondary hover:text-primary transition-colors">
-                        +91 7251818068
-                      </a>
-                    </div>
-                  </div>
+                  )}
                 </div>
                 
                 <div className="mt-8 pt-6 border-t border-text-muted/10">
                   <h3 className="text-lg font-medium mb-4">Follow Me</h3>
                   <div className="flex space-x-4">
-                    <a
-                      href="https://github.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-full bg-surface-light hover:bg-primary/10 text-text-secondary hover:text-primary transition-all"
-                    >
-                      <FaGithub size={20} />
-                    </a>
-                    <a
-                      href="https://linkedin.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-full bg-surface-light hover:bg-primary/10 text-text-secondary hover:text-primary transition-all"
-                    >
-                      <FaLinkedin size={20} />
-                    </a>
-                    <a
-                      href="https://twitter.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-full bg-surface-light hover:bg-primary/10 text-text-secondary hover:text-primary transition-all"
-                    >
-                      <FaTwitter size={20} />
-                    </a>
+                    {portfolioConfig.social.github && (
+                      <a
+                        href={portfolioConfig.social.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full bg-surface-light hover:bg-primary/10 text-text-secondary hover:text-primary transition-all"
+                      >
+                        <FaGithub size={20} />
+                      </a>
+                    )}
+                    {portfolioConfig.social.linkedin && (
+                      <a
+                        href={portfolioConfig.social.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full bg-surface-light hover:bg-primary/10 text-text-secondary hover:text-primary transition-all"
+                      >
+                        <FaLinkedin size={20} />
+                      </a>
+                    )}
+                    {portfolioConfig.social.twitter && portfolioConfig.social.twitter !== '#' && (
+                      <a
+                        href={portfolioConfig.social.twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full bg-surface-light hover:bg-primary/10 text-text-secondary hover:text-primary transition-all"
+                      >
+                        <FaTwitter size={20} />
+                      </a>
+                    )}
+                    {portfolioConfig.social.instagram && portfolioConfig.social.instagram !== '#' && (
+                      <a
+                        href={portfolioConfig.social.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full bg-surface-light hover:bg-primary/10 text-text-secondary hover:text-primary transition-all"
+                      >
+                        <FaInstagram size={20} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -176,7 +197,7 @@ export default function Contact() {
                           onChange={handleChange}
                           required
                           className="w-full bg-surface-dark border border-text-muted/20 rounded-lg px-4 py-3 text-text-primary focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-                          placeholder="John Doe"
+                          placeholder="Anuved"
                         />
                       </div>
                       
@@ -192,7 +213,7 @@ export default function Contact() {
                           onChange={handleChange}
                           required
                           className="w-full bg-surface-dark border border-text-muted/20 rounded-lg px-4 py-3 text-text-primary focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-                          placeholder="john@example.com"
+                          placeholder="[EMAIL_ADDRESS]"
                         />
                       </div>
                     </div>

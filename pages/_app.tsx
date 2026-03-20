@@ -1,11 +1,14 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { AnimatePresence } from 'framer-motion';
+import { ThemeProvider } from 'next-themes';
 
 export default function App({ Component, pageProps, router }: AppProps) {
   return (
-    <AnimatePresence mode="wait">
-      <Component {...pageProps} key={router.route} />
-    </AnimatePresence>
+    <ThemeProvider attribute="class" defaultTheme="dark">
+      <AnimatePresence mode="wait">
+        <Component {...pageProps} key={router.route} />
+      </AnimatePresence>
+    </ThemeProvider>
   );
 } 

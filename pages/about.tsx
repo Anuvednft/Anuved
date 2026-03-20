@@ -4,52 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FaDownload, FaCode, FaServer, FaMobileAlt, FaDatabase } from 'react-icons/fa';
 import Layout from '@/components/Layout';
-
-// Experience items
-const experiences = [
-  {
-    title: 'Senior Full Stack Developer',
-    company: 'Acme Tech Inc.',
-    period: '2021 - Present',
-    description: 'Led the development of web applications using React, Node.js, and MongoDB. Implemented modern CI/CD pipelines and mentored junior developers.',
-  },
-  {
-    title: 'Full Stack Developer',
-    company: 'Tech Solutions Ltd.',
-    period: '2019 - 2021',
-    description: 'Developed and maintained multiple client projects with MERN stack. Collaborated with UI/UX designers to implement responsive interfaces.',
-  },
-  {
-    title: 'Frontend Developer',
-    company: 'Web Innovators',
-    period: '2017 - 2019',
-    description: 'Built dynamic user interfaces using React and worked on optimization techniques for better performance.',
-  },
-];
-
-// Services offered
-const services = [
-  {
-    icon: <FaCode className="text-primary text-3xl" />,
-    title: 'Frontend Development',
-    description: 'Creating responsive, accessible, and performant user interfaces with modern JavaScript frameworks.'
-  },
-  {
-    icon: <FaServer className="text-primary text-3xl" />,
-    title: 'Backend Development',
-    description: 'Building robust server-side applications with Node.js, Express, and other modern frameworks.'
-  },
-  {
-    icon: <FaMobileAlt className="text-primary text-3xl" />,
-    title: 'Responsive Web Design',
-    description: 'Ensuring applications look and work great on all devices, from mobile phones to desktops.'
-  },
-  {
-    icon: <FaDatabase className="text-primary text-3xl" />,
-    title: 'Database Architecture',
-    description: 'Designing and implementing efficient database structures for optimal performance.'
-  },
-];
+import { portfolioConfig } from '@/config/portfolio';
 
 export default function About() {
   return (
@@ -98,29 +53,29 @@ export default function About() {
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <h2 className="text-2xl font-bold mb-4">
-                I'm <span className="gradient-text">Vedkamal</span>, a Full Stack Developer
+                I'm <span className="gradient-text">{portfolioConfig.personal.name}</span>, a {portfolioConfig.personal.role.split('&')[0].trim()} Developer
               </h2>
               <p className="text-text-secondary mb-6">
-                With several years of experience in web development, I specialize in creating modern, responsive, and user-friendly applications. I'm passionate about using technology to solve real-world problems and deliver exceptional user experiences.
+                {portfolioConfig.personal.about.paragraph1}
               </p>
               <p className="text-text-secondary mb-6">
-                My journey in web development began with a fascination for creating user interfaces that are not only visually appealing but also functionally powerful. Over the years, I've expanded my skills to cover the entire development stack.
+                {portfolioConfig.personal.about.paragraph2}
               </p>
               
               <div className="grid grid-cols-2 gap-4 mb-8">
                 <div>
                   <h3 className="text-lg font-semibold text-primary mb-2">Education</h3>
-                  <p className="text-text-secondary">BSc in Computer Science</p>
-                  <p className="text-text-muted">University Name, 2017</p>
+                  <p className="text-text-secondary">{portfolioConfig.personal.education.degree}</p>
+                  <p className="text-text-muted">{portfolioConfig.personal.education.university}</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-primary mb-2">Location</h3>
-                  <p className="text-text-secondary">Your Location</p>
-                  <p className="text-text-muted">Available for remote work</p>
+                  <p className="text-text-secondary">{portfolioConfig.personal.location}</p>
+                  <p className="text-text-muted">{portfolioConfig.personal.availability}</p>
                 </div>
               </div>
               
-              <Link href="/files/resume.pdf" target="_blank" className="button-primary inline-flex items-center gap-2">
+              <Link href={portfolioConfig.personal.resumeUrl} target="_blank" className="button-primary inline-flex items-center gap-2">
                 Download CV <FaDownload />
               </Link>
             </motion.div>
@@ -141,7 +96,7 @@ export default function About() {
           </div>
           
           <div className="max-w-4xl mx-auto">
-            {experiences.map((exp, index) => (
+            {portfolioConfig.experiences.map((exp, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -179,7 +134,7 @@ export default function About() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {services.map((service, index) => (
+            {portfolioConfig.services.map((service, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}

@@ -1,54 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Layout from '@/components/Layout';
-
-// Skill categories and items
-const skillCategories = [
-  {
-    name: 'Frontend Development',
-    skills: [
-      { name: 'React', level: 68 },
-      { name: 'Next.js', level: 64 },
-      { name: 'TypeScript', level: 60 },
-      { name: 'JavaScript', level: 71 },
-      { name: 'HTML/CSS', level: 68 },
-      { name: 'Tailwind CSS', level: 64 },
-    ],
-  },
-  {
-    name: 'Backend Development',
-    skills: [
-      { name: 'Node.js', level: 64 },
-      { name: 'Express', level: 60 },
-      { name: 'MongoDB', level: 56 },
-      { name: 'PostgreSQL', level: 53 },
-      { name: 'GraphQL', level: 49 },
-      { name: 'REST API', level: 68 },
-    ],
-  },
-  {
-    name: 'Tools & Technologies',
-    skills: [
-      { name: 'Git', level: 64 },
-      { name: 'Docker', level: 53 },
-      { name: 'AWS', level: 49 },
-      { name: 'CI/CD', level: 56 },
-      { name: 'Jest', level: 60 },
-      { name: 'Webpack', level: 56 },
-    ],
-  },
-  {
-    name: 'Design & Others',
-    skills: [
-      { name: 'UI/UX Design', level: 56 },
-      { name: 'Figma', level: 60 },
-      { name: 'Responsive Design', level: 68 },
-      { name: 'Performance Optimization', level: 64 },
-      { name: 'SEO', level: 53 },
-      { name: 'Accessibility', level: 60 },
-    ],
-  },
-];
+import { portfolioConfig } from '@/config/portfolio';
 
 export default function Skills() {
   return (
@@ -70,7 +23,7 @@ export default function Skills() {
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {skillCategories.map((category, categoryIndex) => (
+            {portfolioConfig.allSkillCategories.map((category, categoryIndex) => (
               <motion.div
                 key={category.name}
                 initial={{ opacity: 0, y: 30 }}
@@ -113,12 +66,7 @@ export default function Skills() {
               <h2 className="text-xl font-bold mb-4 text-center">Other Skills & Interests</h2>
               
               <div className="flex flex-wrap justify-center gap-3">
-                {[
-                  'Agile Methodology', 'Team Leadership', 'Project Management',
-                  'Problem Solving', 'Technical Writing', 'Mentoring',
-                  'Mobile-First Design', 'Cross-Browser Compatibility', 'Web Security',
-                  'Data Visualization', 'Progressive Web Apps', 'Serverless Architecture'
-                ].map((skill, index) => (
+                {portfolioConfig.otherSkills.map((skill, index) => (
                   <motion.span
                     key={skill}
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -149,7 +97,7 @@ export default function Skills() {
             </p>
             
             <div className="flex flex-wrap justify-center gap-3">
-              {['Web3', 'Blockchain', 'AI Integration', 'Svelte', 'Rust'].map((item, index) => (
+              {portfolioConfig.currentlyLearning.map((item, index) => (
                 <motion.div
                   key={item}
                   initial={{ opacity: 0, y: 20 }}

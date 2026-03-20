@@ -4,80 +4,17 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import Layout from '@/components/Layout';
+import { portfolioConfig } from '@/config/portfolio';
 
 // Project categories
-const categories = ['All', 'Web App', 'Mobile App', 'UI/UX', 'Other'];
-
-// Project items
-const projects = [
-  {
-    id: 1,
-    title: 'E-Commerce Platform',
-    description: 'A full-featured e-commerce platform with product catalog, shopping cart, payment integration, and admin dashboard.',
-    image: '/images/project-ecommerce.jpg',
-    category: 'Web App',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Redux'],
-    github: '#',
-    demo: '#',
-  },
-  {
-    id: 2,
-    title: 'Social Media Dashboard',
-    description: 'A responsive dashboard to manage multiple social media accounts with analytics and scheduling features.',
-    image: '/images/project-dashboard.jpg',
-    category: 'Web App',
-    technologies: ['Vue.js', 'Firebase', 'Tailwind CSS'],
-    github: '#',
-    demo: '#',
-  },
-  {
-    id: 3,
-    title: 'Task Management App',
-    description: 'A mobile application for managing tasks, to-do lists, and reminders with cloud synchronization.',
-    image: '/images/project-taskapp.jpg',
-    category: 'Mobile App',
-    technologies: ['React Native', 'Redux', 'Firebase'],
-    github: '#',
-    demo: '#',
-  },
-  {
-    id: 4,
-    title: 'Financial Dashboard UI',
-    description: 'A modern user interface design for a financial tracking dashboard with data visualization.',
-    image: '/images/project-dashboard.jpg',
-    category: 'UI/UX',
-    technologies: ['Figma', 'Adobe XD', 'Illustrator'],
-    github: '#',
-    demo: '#',
-  },
-  {
-    id: 5,
-    title: 'Weather Forecast App',
-    description: 'A real-time weather forecast application with location tracking and 7-day predictions.',
-    image: '/images/project-taskapp.jpg',
-    category: 'Web App',
-    technologies: ['React', 'OpenWeather API', 'Leaflet'],
-    github: '#',
-    demo: '#',
-  },
-  {
-    id: 6,
-    title: 'Portfolio Website',
-    description: 'A personal portfolio website showcasing projects and skills with modern design and animations.',
-    image: '/images/project-ecommerce.jpg',
-    category: 'Web App',
-    technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
-    github: '#',
-    demo: '#',
-  },
-];
+const categories = ['All', 'Mobile App', 'Web App'];
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState('All');
   
   const filteredProjects = activeCategory === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === activeCategory);
+    ? portfolioConfig.projects 
+    : portfolioConfig.projects.filter(project => project.category === activeCategory);
   
   return (
     <Layout title="Projects | Vedkamal - Full Stack Developer">
