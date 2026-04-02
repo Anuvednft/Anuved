@@ -151,7 +151,7 @@ export const portfolioConfig = {
   id: 6,
   title: 'Township Master',
   description: 'Built a real estate website using Next.js and Supabase, and helped it rank on Google for Lucknow, Uttar Pradesh. Managed the project as a custom web solution with modern performance and scalable backend support.',
-  image: '/images/project-townshipmaster.jpg',
+  image: '/images/project-townshipmaster.jpg.PNG',
   category: 'Web App',
   technologies: ['Next.js', 'Supabase', 'Real Estate'],
   github: '#',
